@@ -3,9 +3,7 @@ import React, { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import Spline from '@splinetool/react-spline';
 import Animate from 'react-smooth';
-import mijnFilm from '/src/mijnFilm'
-
-// a946acc9-cada-4c6f-8fb9-8086cad5436a
+import mijnFilm from './src/mijnFilm.mp4'
 
 
 const VIDEO_PATH = mijnFilm 
