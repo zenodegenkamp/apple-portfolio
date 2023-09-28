@@ -12,7 +12,7 @@ export default function PlayerComponent() {
    const [isPlaying, setIsPlaying] = useState(false);
    const [isFinished, setIsFinished] = useState(false);
 
-   const isTabletOrPhone = useMediaQuery('(max-width:768px)')
+   const isTabletOrPhone = useMediaQuery('(max-width:1200px)')
    
    
    useEffect(() => {
