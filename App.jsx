@@ -45,7 +45,7 @@ export default function PlayerComponent() {
             />
          ) : (
             <>
-               <Spline className="apple-spline" onMouseDown={onMouseDown} scene="https://prod.spline.design/qnzLCmcBfHFLcUyR/scene.splinecode"
+               <Spline className="apple-spline" scene="https://prod.spline.design/qnzLCmcBfHFLcUyR/scene.splinecode"
 
                />
                <div className='button'>
