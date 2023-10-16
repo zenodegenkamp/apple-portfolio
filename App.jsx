@@ -6,43 +6,23 @@ import mijnFilm from './src/mijnFilm.mp4';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
+
 export default function PlayerComponent() {
 
-   const playerRef = useRef(null);
-   const [isPlaying, setIsPlaying] = useState(false);
-   const [isFinished, setIsFinished] = useState(false);
-
-   const isTabletOrPhone = useMediaQuery('(max-width:1200px)')
-   
-   
-   useEffect(() => {
-      if (isTabletOrPhone){
-         setIsFinished(true)
-      }
-    }, []);
-   
-   
-
-   function startMovie() {
-      setIsPlaying((oldValue) => !oldValue);
-   }
-
-
-   const handleVideoEnded = () => {
-      setIsFinished(true);
-      if (playerRef.current) {
-         playerRef.current.parentNode.removeChild(playerRef.current);
-      }
-   };
 
    return (
       <div className='video__container'>
-        
-         
-                  <Spline
+
+                  {/* <Spline
                      scene="https://prod.spline.design/wDnh46uuu0SbxmgA/scene.splinecode"
                      className='spline'
-                  />
+                  /> */}
+            <iframe
+      src='https://my.spline.design/test-c2a2ac943236cb867fee93ab947c05c6/'
+      frameBorder='0'
+      width='100%'
+      height='100%'
+    />
 
       </div>
    );
