@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import spinner from './src/images/spinner.gif'
-import { TypeAnimation } from 'react-type-animation';
 
 export default function PlayerComponent() {
   const [isLoaded, setIsLoaded] = useState(false);
