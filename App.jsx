@@ -1,60 +1,76 @@
-import React, { useRef, useState, useEffect} from 'react';
-import ReactPlayer from 'react-player';
-import Spline from '@splinetool/react-spline';
-import Animate from 'react-smooth';
-import mijnFilm from './src/mijnFilm.mp4';
-import useMediaQuery from '@mui/material/useMediaQuery';
 
-
+import React, { useState, useEffect } from 'react';
+import spinner from './src/images/spinner.gif'
+import { TypeAnimation } from 'react-type-animation';
 
 export default function PlayerComponent() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
 
+  const handleVideoEnd = () => {
+    setIsVideoPlaying(false);
+    setIsLoaded(true);
+  };
 
-   return (
-      
+  useEffect(() => {
+    const video = document.querySelector('video');
+    video.addEventListener('ended', handleVideoEnd);
 
-      <iframe
-      src='https://my.spline.design/test-c2a2ac943236cb867fee93ab947c05c6/'
-      frameBorder='0'
-      width='100%'
-      height='100%'
-    />
+    return () => {
+      video.removeEventListener('ended', handleVideoEnd);
+    };
+  }, []);
 
-
-   );
-   
+  return (
+    <div className='video__container'>
+      {isVideoPlaying && (
+        <video
+          src="./src/mijnFilm.mp4"
+          autoPlay
+        />
+      )}
+      {isLoaded && (
+        <iframe
+          src='https://my.spline.design/test-c2a2ac943236cb867fee93ab947c05c6/'
+          frameBorder='0'
+          width='100%'
+          height='100%'
+        />
+      )}
+    </div>
+  );
 }
 
-// import React, { useEffect, useState } from 'react';
 
+
+
+// import React, { useState } from 'react';
+// import spinner from './src/images/spinner.gif'
+// import { TypeAnimation } from 'react-type-animation';
 
 // export default function PlayerComponent() {
-//   const [loading, setLoading] = useState(true);
+//   const [isLoaded, setIsLoaded] = useState(false);
 
-//   useEffect(() => {
-//     const script = document.createElement('script');
-//     script.src = 'https://unpkg.com/@splinetool/viewer@0.9.490/build/spline-viewer.js';
-//     script.async = true;
-//     document.body.appendChild(script);
-
-//     script.onload = () => {
-//       const viewer = document.createElement('spline-viewer');
-//       viewer.setAttribute('hint', 'loading-anim');
-//       viewer.setAttribute('url', 'https://prod.spline.design/wDnh46uuu0SbxmgA/scene.splinecode');
-//       document.body.appendChild(viewer);
-
-//       // Markeer het laden als voltooid
-//       setLoading(false);
-//     };
-
-//     return () => {
-//       document.body.removeChild(script);
-//     };
-//   }, []);
+//   const handleIframeLoad = () => {
+//     setIsLoaded(true);
+//   };
 
 //   return (
-//     <div id="spline-viewer-container">
-//       {loading ? <h1>Loading the magic world</h1> : null}
+//     <div className='video__container'>
+//       {!isLoaded && (
+//         <div className='loading'>
+          
+//           <h1>Loading the Magic 3D world...</h1>
+//         </div>
+//       )}
+//       <iframe
+//         src='https://my.spline.design/test-c2a2ac943236cb867fee93ab947c05c6/'
+//         frameBorder='0'
+//         width='100%'
+//         height='100%'
+//         onLoad={handleIframeLoad}
+//       />
 //     </div>
 //   );
 // }
+
