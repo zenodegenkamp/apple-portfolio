@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import spinner from './src/images/spinner.gif'
 import { TypeAnimation } from 'react-type-animation';
+import movie from "./src/mijnFilm.mp4"
 
 export default function PlayerComponent() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -25,7 +26,7 @@ export default function PlayerComponent() {
     <div className='video__container'>
       {isVideoPlaying && (
         <video
-          src="./src/mijnFilm.mp4"
+          src={movie}
           autoPlay
         />
       )}
